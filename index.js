@@ -104,22 +104,16 @@ function Airplane(name) {
  function Car(model, milesPerGallon) {
     this.model = model;
     this.milesPerGallon = milesPerGallon;
-    this.tank = [];
-    this.odometer = [];
+    this.tank = 0;
+    this.odometer = 0;
   }
 
 
   Car.prototype.fill = function(gallons){
-    if(this.tank.length < 10){
-      this.tank.push(gallons);
-    }
+    return this.tank = this.tank + gallons
   }
 
   const carOne = new Car(`Explorer`);
-
-  carOne.fill(gallons);
-
-  console.log(this.tank);
   
   console.log(carOne.toString());
   
@@ -131,28 +125,29 @@ function Airplane(name) {
       - Besides the methods on Person.prototype, babies have the ability to `.play()`:
           + Should return a string "Playing with x", x being the favorite toy.
   */
- function Baby(name, age) {
-   Person.call(this, name, age);
-   this.isBaby = favoriteToy;
+ function Baby(name, age, favoriteToy) {
+   Person.call(this, name, age, favoriteToy);
+   this.favoriteToy = favoriteToy;
   }
   Baby.prototype = Object.create(Person.prototype);
 
-  const personFour = new Baby({
-    name: 'Raj',
-    age: 1,
-    favoriteToy: 'rattle'
-  })
-  console.log(`${this.name} loves to play with ${this.favoriteToy}`)
+  Baby.prototype.play = function (){
+    return `${this.name} loves to play with ${this.favoriteToy}`
+  }
+  const personFour = new Baby('Raj', 1, 'rattle')
+  
+  
+
 
  
   
   /* 
     TASK 4
     In your own words explain the four principles for the "this" keyword below:
-    1. 
-    2. 
-    3. 
-    4. 
+    1. Global Binding - The value of .this is the biggest object, which is the window.
+    2. Implicit Binding - The most common use of the .this keyword, it's inside of a function, to call objects.
+    3. New Binding - uses the word "new" to create objects within a constructor function.
+    4. Explicit Binding - uses the .call and .apply methods to call objects explicitly.
   */
   
   
